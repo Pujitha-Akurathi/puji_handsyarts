@@ -143,6 +143,7 @@
             <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
         </div>
         <div class="cart-items" id="cart-items">
+            <!-- Items will be injected here JS -->
             <div class="empty-cart-msg">Your cart is empty.</div>
         </div>
         <div class="cart-footer">
@@ -154,6 +155,28 @@
                     class="fab fa-whatsapp"></i></button>
         </div>
     </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal"><i class="fas fa-times"></i></button>
+            <h2>Complete Your Order</h2>
+            <p>Please provide your details to proceed to WhatsApp checkout.</p>
+            <form id="checkout-form" onsubmit="submitCheckout(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" required placeholder="Enter your full address" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Proceed on WhatsApp <i
+                        class="fab fa-whatsapp"></i></button>
+            </form>
+        </div>
+    </div>
+
 
     <!-- Footer -->
     <footer>
@@ -204,4 +227,5 @@
 
 
 </html>
+
 

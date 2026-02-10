@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puji_handsyarts | Premium Handmade Accessories & Crafts</title>
+    <meta name="description"
+        content="Discover our exclusive collection of handcrafted bangles. Premium designs for weddings, parties, and everyday elegance.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo"><img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770740801/logo_sys16a.png" alt="Puji_handsyarts Logo" class="logo-img">
+                Puji_<span>handsyarts</span></a>
+            <div class="menu-icon" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- Navigation Menu -->
+
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#collections" class="nav-link">Collections</a></li>
+                <li class="nav-item"><a href="#featured" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="cart-icon"><i class="fas fa-shopping-bag"></i><span class="cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Adorn Your Life with <br><span>Handcrafted Elegance</span></h1>
+            <p>Explore our unique collection of custom bangles, resin keychains, and woolen crafts – perfect for gifts
+                and personal style.</p>
+            <a href="#collections" class="btn btn-primary">Shop Collection</a>
+        </div>
+        <div class="hero-image">
+            <!-- Using a high quality PNG from 2 set bangles as hero -->
+            <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770747774/dp_jk49vo.png" alt="Premium Bangles">
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="collections">
+        <div class="container">
+            <h2 class="section-title">Curated Collections</h2>
+            <div class="categories">
+                <!-- Bangles -->
+                <div class="category-card">
+                    <div class="cat-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770741528/IMG_20260204_215457_paiono.jpg" alt="Bangles Collection">
+                    </div>
+                    <h3>Bangles</h3>
+                    <a href="bangles.html" class="btn-text">View Categories <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Woolen Keychains -->
+                <div class="category-card">
+                    <div class="cat-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770743863/image3_ojvy7h.jpg" alt="Woolen Keychains">
+                    </div>
+                    <h3>Woolen Keychains</h3>
+                    <a href="collections.html?type=woolen" class="btn-text">View All <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Resin Keychains -->
+                <div class="category-card">
+                    <div class="cat-img">
+                        <img src="images/resin keychains/image3.jpeg" alt="Resin Keychains">
+                    </div>
+                    <h3>Resin Letter Keychains</h3>
+                    <a href="collections.html?type=resin" class="btn-text">View All <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Bag</h3>
+            <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Items will be injected here JS -->
+            <div class="empty-cart-msg">Your cart is empty.</div>
+        </div>
+        <div class="cart-footer">
+            <div class="total">
+                <span>Total</span>
+                <span id="cart-total">₹0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">Checkout on WhatsApp <i
+                    class="fab fa-whatsapp"></i></button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="close-modal"><i class="fas fa-times"></i></button>
+            <h2>Complete Your Order</h2>
+            <p>Please provide your details to proceed to WhatsApp checkout.</p>
+            <form id="checkout-form" onsubmit="submitCheckout(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" required placeholder="Enter your full address" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Proceed on WhatsApp <i
+                        class="fab fa-whatsapp"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 2 Set Bangles Collection -->
+    <section id="two-set" class="featured">
+        <div class="container">
+            <div class="header-with-link">
+                <h2 class="section-title">2 Set Bangles</h2>
+                <a href="collections.html?type=2-set" class="view-all-link">View All <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770741528/IMG_20260204_215457_paiono.jpg" alt="Luxe Gold Pair">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Luxe Gold Pair', 150, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770741528/IMG_20260204_215457_paiono.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Luxe Gold Pair</h4>
+                        <p class="price">₹150</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770741523/IMG_20260120_230933_ng0tju.jpg" alt="Royal Kudhan Bangles">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Royal Kudhan Bangles', 120, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770741523/IMG_20260120_230933_ng0tju.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Royal Kudhan Bangles</h4>
+                        <p class="price">₹120</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770741533/IMG_20260204_220314_eb8cii.jpg" alt="Antique Blue Bangles">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Antique Blue Bangles', 80, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770741533/IMG_20260204_220314_eb8cii.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Antique Blue Bangles</h4>
+                        <p class="price">₹80</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770741528/IMG_20260107_100210_jnbg9i.jpg" alt="Classic Lotus Bangles">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Classic Lotus Bangles', 200, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770741528/IMG_20260107_100210_jnbg9i.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Classic Lotus Bangles</h4>
+                        <p class="price">₹200</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4 Set Bangles Collection -->
+    <section id="four-set" class="featured">
+        <div class="container">
+            <div class="header-with-link">
+                <h2 class="section-title">4 Set Bangles</h2>
+                <a href="collections.html?type=4-set" class="view-all-link">View All <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770744692/IMG_20260204_215354_fdnknp.jpg" alt="Bridal Quad Set">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Bridal Quad Set', 450, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770744692/IMG_20260204_215354_fdnknp.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Bridal Quad Set</h4>
+                        <p class="price">₹450</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770744683/IMG_20260204_215409_mrubyk.jpg" alt="Velvet Finish Set">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Velvet Finish Set', 400, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770744683/IMG_20260204_215409_mrubyk.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Velvet Finish Set</h4>
+                        <p class="price">₹400</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770744694/IMG_20260204_223634_s7rpva.jpg" alt="Golden Textures">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Golden Textures', 350, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770744694/IMG_20260204_223634_s7rpva.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Golden Textures</h4>
+                        <p class="price">₹350</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770744692/IMG_20260204_215745_zpkbks.jpg" alt="Heritage 4-Piece">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Heritage 4-Piece', 200, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770744692/IMG_20260204_215745_zpkbks.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Heritage 4-Piece</h4>
+                        <p class="price">₹200</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Raindrop Bangles Collection -->
+    <section id="raindrop" class="featured">
+        <div class="container">
+            <div class="header-with-link">
+                <h2 class="section-title">Raindrop Collection</h2>
+                <a href="collections.html?type=raindrop" class="view-all-link">View All <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770745415/IMG-20260128-WA0017_u9y4qz.jpg" alt="Emerald Raindrop">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Emerald Raindrop', 550, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770745415/IMG-20260128-WA0017_u9y4qz.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Emerald Raindrop</h4>
+                        <p class="price">₹550</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770745423/IMG_20260109_145849_n5hsgt.jpg" alt="Ruby Raindrop">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Ruby Raindrop', 200, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770745423/IMG_20260109_145849_n5hsgt.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Ruby Raindrop</h4>
+                        <p class="price">₹200</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770745449/IMG_3062_v6hwrb.png" alt="Sapphire Raindrop">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Sapphire Raindrop', 600, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770745449/IMG_3062_v6hwrb.png')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Sapphire Raindrop</h4>
+                        <p class="price">₹600</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770745427/IMG_20260110_125219_x8hg1f.jpg" alt="Lotus Raindrop set">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Lotus Raindrop set', 250, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770745427/IMG_20260110_125219_x8hg1f.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Lotus Raindrop set</h4>
+                        <p class="price">₹250</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thread Bangles Collection -->
+    <section id="thread" class="featured">
+        <div class="container">
+            <div class="header-with-link">
+                <h2 class="section-title">Thread Bangle Sets</h2>
+                <a href="collections.html?type=thread" class="view-all-link">View All <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770746201/IMG_20260113_131641_zblwin.jpg" alt="Silk Thread Red">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Silk Thread Red', 200, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770746201/IMG_20260113_131641_zblwin.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Silk Thread Red</h4>
+                        <p class="price">₹200</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770746208/IMG_20260120_230330_pwd9bt.jpg" alt="Multicolor Thread">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Multicolor Thread', 450, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770746208/IMG_20260120_230330_pwd9bt.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Multicolor Thread</h4>
+                        <p class="price">₹450</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770746253/IMG_20260204_222838_r9diad.jpg" alt="Designer Thread Set">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Designer Thread Set', 300, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770746253/IMG_20260204_222838_r9diad.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Designer Thread Set</h4>
+                        <p class="price">₹300</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770746445/IMG_2987_gtfjlt.jpg" alt="Festive Thread">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Festive Thread', 350, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770746445/IMG_2987_gtfjlt.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Festive Thread</h4>
+                        <p class="price">₹350</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="featured" class="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Artistry</h2>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770743863/image3_ojvy7h.jpg" alt="Woolen Flower Keychains">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Woolen Flower Keychains', 50, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770743863/image3_ojvy7h.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Woolen Flower Keychains</h4>
+                        <p class="price">₹50</p>
+                    </div>
+                </div>
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="https://res.cloudinary.com/ddroatnsh/image/upload/v1770744235/image1_zc0c3a.jpg" alt="Resin Letter Keychains">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Resin Letter Keychains', 99, 'https://res.cloudinary.com/ddroatnsh/image/upload/v1770744235/image1_zc0c3a.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Resin Letter Keychains</h4>
+                        <p class="price">₹99</p>
+                    </div>
+                </div>
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/Raindrop bangles/IMG_20260204_230156.jpg" alt="Ruby Classic">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Ruby Classic', 350, 'images/Raindrop bangles/IMG_20260204_230156.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Ruby Classic</h4>
+                        <p class="price">₹350</p>
+                    </div>
+                </div>
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/2 set bangles/IMG_20260109_145820.jpg" alt="Antique Gold Pair">
+                        <button class="add-to-cart-btn"
+                            onclick="addToCart('Antique Gold Pair', 150, 'images/2 set bangles/IMG_20260109_145820.jpg')">Add
+                            to Cart</button>
+                    </div>
+                    <div class="product-info">
+                        <h4>Antique Gold Pair</h4>
+                        <p class="price">₹150</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <h2>Puji_<span>handsyarts</span></h2>
+                <p>Unique handcrafted bangles, resin keychains, and woolen accessories – made with love and care for
+                    every occasion. Follow our journey of art and creativity.</p>
+                <div class="footer-whatsapp">
+                    <a href="https://wa.me/917207460614" class="enquire-btn" target="_blank">
+                        Enquire on WhatsApp <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#featured">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://instagram.com/puji_handsyarts?igsh=MTM3Y212MWxobTNjOQ==" target="_blank"
+                        title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@Puji_handsyarts" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Puji_handsyarts. All Rights Reserved.</p>
+            <p>Handcrafted with ❤️</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
